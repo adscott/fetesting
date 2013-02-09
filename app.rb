@@ -8,7 +8,8 @@ get '/' do
 end
 
 get '/autocomplete' do
-  json dictionary.select { |word| word.start_with? params[:term] }[0...7]
+  term = params[:term].strip
+  json term.empty? ? [] : dictionary.select { |word| word.start_with? term }[0...7]
 end
 
 get '/search' do

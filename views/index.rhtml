@@ -3,4 +3,14 @@
   <label for='search-term'>Search</label>
   <input id='search-term' type='text' name='term' class='input-medium search-query' />
   <input type='submit' value='Go' class='btn btn-primary' />
+  <div id='search-term-suggestions' />
 </form>
+<script type='text/javascript' src='/vendor/jquery.js'></script>
+<script type='text/javascript' src='/vendor/underscore-min.js'></script>
+<script type='text/javascript' src='/vendor/n.js'></script>
+<script type='text/javascript' src='/javascripts/AutoComplete.js'></script>
+<script type='text/javascript'>
+  $(document).ready(function () {
+    search.autoComplete($('#search-term'), $('#search-term-suggestions'));
+  });
+</script>
