@@ -1,11 +1,12 @@
 n('search', function (ns) {
 
   ns.autoComplete = function (input, destination) {
-    var parser = function (suggestions) {
-      var suggestionsElements = _(suggestions).map(function (suggestion) {
-        return '<li>' + suggestion + '</li>';
+    var parser = function (data) {
+      var suggestions = _(data).map(function (text) {
+        var suggestion = new search.Suggestion(text, $(input).val());
+        return suggestion.toHtml();
       });
-      var html = '<ul>' + suggestionsElements.join('') + '</ul>';
+      var html = '<ul>' + suggestions.join('') + '</ul>';
       $(destination).html(html);
     };
 
@@ -17,7 +18,11 @@ n('search', function (ns) {
       });
     };
 
+    $('a.suggestion', destination).live('click', function (e) {
+      $(input).val($(e.currentTarget).text());
+    });
     $(input).keyup(fetcher);
+
   };
 
 });

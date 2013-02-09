@@ -16,8 +16,21 @@ describe('Auto Complete Integration', function () {
       });
 
       it('should have suggestions', function () {
-        expect($('#mySearchSuggestions li').length).toEqual(2);
+        var suggestions = _($('#mySearchSuggestions li')).map(function (element) {
+          return $(element).text();
+        });
+        expect(suggestions).toEqual(['orange', 'oranges']);
       });
+
+      describe('when choosing', function () {
+        beforeEach(function () {
+          $('#mySearchSuggestions li:first a').click();
+        });
+
+        it('should populate the search field', function () {
+          expect($('#mySearch').val()).toEqual('orange');
+        });
+      })
     });
   });
 });
