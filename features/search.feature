@@ -3,12 +3,12 @@ Feature: Search
   As a customer
   I want to be able to search
 
-  Scenario: Search for apples
+  Scenario: Search for networks
     Given I am on the home page
-    When I fill in "Search" with "app"
-    And I complete "apple"
+    When I fill in "Search" with "netw"
+    And I complete "networks"
     And I press "Go"
     Then I should see the following results:
-      | Fruit |
-      | Cider |
-      | Mac   |
+      | Vodafone |
+      | Telstra  |
+      | Optus    |

@@ -12,4 +12,5 @@ group :test do
   gem 'cucumber-sinatra'
   gem 'capybara'
   gem 'jasmine'
+  gem 'ruby-debug'
 end

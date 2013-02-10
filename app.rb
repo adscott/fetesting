@@ -9,7 +9,9 @@ end
 
 get '/autocomplete' do
   term = params[:term].strip
-  json term.empty? ? [] : dictionary.select { |word| word.start_with? term }[0...7]
+  suggestions = term.empty? ? [] : dictionary.select { |word| word.start_with? term }
+  suggestions = suggestions[0...7] if suggestions.size > 7
+  json suggestions
 end
 
 get '/search' do
